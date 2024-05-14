@@ -3,24 +3,90 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>La máquina ed la verdad</title>
-  <!-- Enlaces a Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <!-- Enlace a tu archivo CSS personalizado -->
-  <link rel="stylesheet" href="styles.css">
+  <title>Index</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      margin: 0;
+    }
+    .image-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh; /* Ocupar toda la altura de la ventana */
+    }
+    .image-container img {
+      width: 100%; /* Ocupar todo el ancho del contenedor */
+      height: 100%; /* Ocupar toda la altura del contenedor */
+      object-fit: cover; /* Ajustar la imagen para que cubra todo el contenedor */
+      opacity: 0.04;
+      transition: opacity 0.8s ease;
+    }
+    .image-container img.clicked {
+      opacity: 1 !important; /* Mantener la imagen visible cuando se hace clic */
+    }
+    .row {
+      margin: 0 !important; /* Eliminar márgenes */
+      padding: 0 !important; /* Eliminar relleno */
+    }
+    .col-md-2 {
+      padding: 0 !important; /* Eliminar relleno */
+    }
+  </style>
 </head>
 <body>
 
-  <button class="btn"></button>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2 col-sm-4">
+      <div class="image-container">
+        <img src="img/1.png" alt="Imagen 1" onclick="toggleImage(this, 'sound/1.mp3')">
+      </div>
+    </div>
+    <div class="col-md-2 col-sm-4">
+      <div class="image-container">
+        <img src="img/2.png" alt="Imagen 2" onclick="toggleImage(this, 'sound/2.mp3')">
+      </div>
+    </div>
+    <div class="col-md-2 col-sm-4">
+      <div class="image-container">
+        <img src="img/3.png" alt="Imagen 3" onclick="toggleImage(this, 'sound/3.mp3')">
+      </div>
+    </div>
+    <div class="col-md-2 col-sm-4">
+      <div class="image-container">
+        <img src="img/4.png" alt="Imagen 4" onclick="toggleImage(this, 'sound/4.mp3')">
+      </div>
+    </div>
+    <div class="col-md-2 col-sm-4">
+      <div class="image-container">
+        <img src="img/5.png" alt="Imagen 5" onclick="toggleImage(this, 'sound/5.mp3')">
+      </div>
+    </div>
+    <div class="col-md-2 col-sm-4">
+      <div class="image-container">
+        <img src="img/6.png" alt="Imagen 6" onclick="toggleImage(this, 'sound/6.mp3')">
+      </div>
+    </div>
+  </div>
+</div>
 
-  <!-- Elemento de audio para reproducir sonidos -->
-  <audio id="sound" preload="auto"></audio>
+<script>
+  function toggleImage(image, audioSrc) {
+    var audio = new Audio(audioSrc);
+    audio.loop = true;
+    if (image.classList.contains('clicked')) {
+      image.classList.remove('clicked'); // Remover la clase de la imagen
+      audio.pause(); // Pausar el audio
+      audio.currentTime = 0; // Reiniciar la reproducción al principio
+    } else {
+      image.classList.add('clicked'); // Agregar la clase a la imagen
+      audio.play(); // Reproducir el audio en bucle
+    }
+  }
+</script>
 
-  <!-- Enlaces a Bootstrap JS y jQuery (opcional) -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <!-- Enlace a tu archivo JavaScript personalizado -->
-  <script src="script.js"></script>
 </body>
 </html>
